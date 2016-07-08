@@ -7,7 +7,7 @@
 
 Welcome to OpenCV-Python Tutorials's documentation!
 ===================================================
-This is Fork From:https://github.com/abidrahmank/OpenCV2-Python-
+This is Fork From:https://github.com/abidrahmank/OpenCV2-Python-Tutorials
 
 But It updated in 2013 , Too Old. So I Made this 
 
