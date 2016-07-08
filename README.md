@@ -8,6 +8,8 @@ This repo contains tutorials on OpenCV-Python library
 
 Please try the examples with OpenCV 2.4.X before sending any bug reports
 
+Find any Bug Please Pull Requests
+
 Data files
 -----------
 
