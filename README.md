@@ -1,16 +1,12 @@
-OpenCV2-Python-Guide
+OpenCV2.4-Python-Guide
 ====================
 
-This repo contains tutorials on OpenCV-Python library using new cv2 interface
+This repo contains tutorials on OpenCV-Python library
 
-**IMP - This tutorial is meant for OpenCV 3x version. Not OpenCV 2x**
+**IMP - This tutorial is meant for OpenCV 2.4.X version.**
 =======================================================================
 
-**IMP - This tutorial is meant for OpenCV 3x version. Not OpenCV 2x**
-
-**IMP - This tutorial is meant for OpenCV 3x version. Not OpenCV 2x**
-
-Please try the examples with OpenCV 3x before sending any bug reports
+Please try the examples with OpenCV 2.4.X before sending any bug reports
 
 Data files
 -----------
@@ -20,8 +16,10 @@ The input data used in these tutorials are given in **Data** folder
 Online
 ---------
 
-* **For official tutorials, please visit : http://docs.opencv.org/trunk/doc/py_tutorials/py_tutorials.html**
-* https://opencv-python-tutroals.readthedocs.org/en/latest/index.html - This is only for checking. May contain lots of errors, please stick to the official tutorials.
+Officaial Turorials:
+http://opencv24-python-tutorials.readthedocs.io/en/latest/
+
+This is only for checking. May contain lots of errors, please stick to the official tutorials.
 
 Offline
 ---------
