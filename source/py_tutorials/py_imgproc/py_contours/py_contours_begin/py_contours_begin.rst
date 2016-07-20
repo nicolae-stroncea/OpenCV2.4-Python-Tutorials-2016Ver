@@ -25,14 +25,20 @@ Let's see how to find contours of a binary image:
     import numpy as np
     import cv2
      
-    im = cv2.imread('test.jpg')
+    im = cv2.imread('test.jpg',cv2.IMREAD_COLOR)
     imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
     ret,thresh = cv2.threshold(imgray,127,255,cv2.THRESH_BINARY)
     contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
     for data in contours:
         print "The contours have this data %r" %data
+    cv2.drawContours(im,contours,-1,(0,255,0),3)
+    cv2.imshow('output',im)
+    while True:
+        if cv2.waitKey(6) & 0xff == 27:
+            break
 
 See, there are three arguments in **cv2.findContours()** function, first one is source image, second is contour retrieval mode, third is contour approximation method. And it outputs the contours and hierarchy. ``contours`` is a Python list of all the contours in the image. Each individual contour is a Numpy array of (x,y) coordinates of boundary points of the object.
+    And the source imgae is modified by **cv2.findContours()** function.
 
 .. note:: We will discuss second and third arguments and about hierarchy in details later. Until then, the values given to them in code sample will work fine for all images. 
 
