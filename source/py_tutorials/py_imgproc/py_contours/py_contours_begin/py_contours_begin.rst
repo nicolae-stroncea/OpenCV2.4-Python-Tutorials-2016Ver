@@ -25,12 +25,23 @@ Let's see how to find contours of a binary image:
     import numpy as np
     import cv2
      
-    im = cv2.imread('test.jpg')
+    im = cv2.imread('test.jpg',cv2.IMREAD_COLOR)
     imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
-    ret,thresh = cv2.threshold(imgray,127,255,0)
-    image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
-
-See, there are three arguments in **cv2.findContours()** function, first one is source image, second is contour retrieval mode, third is contour approximation method. And it outputs the image, contours and hierarchy. ``contours`` is a Python list of all the contours in the image. Each individual contour is a Numpy array of (x,y) coordinates of boundary points of the object.
+    ret,thresh = cv2.threshold(imgray,127,255,cv2.THRESH_BINARY)
+    contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+    for data in contours:
+        print "The contours have this data %r" %data
+    cv2.drawContours(im,contours,-1,(0,255,0),3)
+    cv2.imshow('output',im)
+    while True:
+        if cv2.waitKey(6) & 0xff == 27:
+            break
+.. image:: images/output.jpg  
+         :alt: Contour Demo
+         :align: center
+         
+See, there are three arguments in **cv2.findContours()** function, first one is source image, second is contour retrieval mode, third is contour approximation method. And it outputs the contours and hierarchy. ``contours`` is a Python list of all the contours in the image. Each individual contour is a Numpy array of (x,y) coordinates of boundary points of the object.
+    And the source imgae is modified by **cv2.findContours()** function.
 
 .. note:: We will discuss second and third arguments and about hierarchy in details later. Until then, the values given to them in code sample will work fine for all images. 
 
@@ -38,23 +49,23 @@ See, there are three arguments in **cv2.findContours()** function, first one is 
 How to draw the contours?
 ===========================
 
-To draw the contours, ``cv2.drawContours`` function is used. It can also be used to draw any shape provided you have its boundary points. Its first argument is source image, second argument is the contours which should be passed as a Python list, third argument is index of contours (useful when drawing individual contour. To draw all contours, pass -1) and remaining arguments are color, thickness etc.
+To draw the contours, ``cv2.drawContours`` function is used. It can also be used to draw any shape provided you have its boundary points. Its first argument is source and destination image, second argument is the contours which should be passed as a Python list, third argument is index of contours (useful when drawing individual contour. To draw all contours, pass -1) and remaining arguments are color, thickness etc.
 
 To draw all the contours in an image:
 ::
 
-    img = cv2.drawContours(img, contours, -1, (0,255,0), 3)
+    cv2.drawContours(img, contours, -1, (0,255,0), 3)
     
 To draw an individual contour, say 4th contour:
 ::
     
-    img = cv2.drawContours(img, contours, 3, (0,255,0), 3)
+    cv2.drawContours(img, contours, 3, (0,255,0), 3)
 
 But most of the time, below method will be useful:
 ::
 
     cnt = contours[4]
-    img = cv2.drawContours(img, [cnt], 0, (0,255,0), 3)
+    cv2.drawContours(img, [cnt], 0, (0,255,0), 3)
     
 .. note:: Last two methods are same, but when you go forward, you will see last one is more useful.
 
