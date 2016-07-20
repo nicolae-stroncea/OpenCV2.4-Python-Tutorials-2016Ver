@@ -36,7 +36,10 @@ Let's see how to find contours of a binary image:
     while True:
         if cv2.waitKey(6) & 0xff == 27:
             break
-
+.. image:: images/output.jpg  
+         :alt: Contour Demo
+         :align: center
+         
 See, there are three arguments in **cv2.findContours()** function, first one is source image, second is contour retrieval mode, third is contour approximation method. And it outputs the contours and hierarchy. ``contours`` is a Python list of all the contours in the image. Each individual contour is a Numpy array of (x,y) coordinates of boundary points of the object.
     And the source imgae is modified by **cv2.findContours()** function.
 
@@ -46,23 +49,23 @@ See, there are three arguments in **cv2.findContours()** function, first one is 
 How to draw the contours?
 ===========================
 
-To draw the contours, ``cv2.drawContours`` function is used. It can also be used to draw any shape provided you have its boundary points. Its first argument is source image, second argument is the contours which should be passed as a Python list, third argument is index of contours (useful when drawing individual contour. To draw all contours, pass -1) and remaining arguments are color, thickness etc.
+To draw the contours, ``cv2.drawContours`` function is used. It can also be used to draw any shape provided you have its boundary points. Its first argument is source and destination image, second argument is the contours which should be passed as a Python list, third argument is index of contours (useful when drawing individual contour. To draw all contours, pass -1) and remaining arguments are color, thickness etc.
 
 To draw all the contours in an image:
 ::
 
-    img = cv2.drawContours(img, contours, -1, (0,255,0), 3)
+    cv2.drawContours(img, contours, -1, (0,255,0), 3)
     
 To draw an individual contour, say 4th contour:
 ::
     
-    img = cv2.drawContours(img, contours, 3, (0,255,0), 3)
+    cv2.drawContours(img, contours, 3, (0,255,0), 3)
 
 But most of the time, below method will be useful:
 ::
 
     cnt = contours[4]
-    img = cv2.drawContours(img, [cnt], 0, (0,255,0), 3)
+    cv2.drawContours(img, [cnt], 0, (0,255,0), 3)
     
 .. note:: Last two methods are same, but when you go forward, you will see last one is more useful.
 
