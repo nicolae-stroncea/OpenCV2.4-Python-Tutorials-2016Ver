@@ -27,7 +27,7 @@ Let's see how to find contours of a binary image:
      
     im = cv2.imread('test.jpg')
     imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
-    ret,thresh = cv2.threshold(imgray,127,255,0)
+    ret,thresh = cv2.threshold(imgray,127,255,cv2.THRESH_BINARY)
     contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
     for data in contours:
         print "The contours have this data %r" %data
